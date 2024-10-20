@@ -16,10 +16,10 @@ class Problem {
         vector<int> goalState = {1,2,3,4,5,6,7,8,0};
 
     private:
-        vector<int> moveup(vector<int>, int);
-        vector<int> movedown(vector<int>, int);
-        vector<int> moveright(vector<int>, int);
-        vector<int> moveleft(vector<int>, int);
+        vector<int> moveup(vector<int>);
+        vector<int> movedown(vector<int>);
+        vector<int> moveright(vector<int>);
+        vector<int> moveleft(vector<int>);
 };
 
 #endif PROBLEM_H_
