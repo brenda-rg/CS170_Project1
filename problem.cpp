@@ -13,7 +13,6 @@ using namespace std;
 Problem::Problem(){};
 
 //0 is the blank space
-
 /* for reference
     vector index =
     { 0  1  2
