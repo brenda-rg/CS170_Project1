@@ -1,3 +1,5 @@
+#ifndef NODE_H_
+#define NODE_H_
 // node data structure file
 #include <iostream>
 #include <list>
@@ -19,3 +21,5 @@ struct Node {
         next = nullptr; 
     }
 };
+
+#endif NODE_H_
