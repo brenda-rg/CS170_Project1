@@ -11,16 +11,25 @@ using namespace std;
 
 struct Node {
 
-    int data;
+    vector<int> data;
     Node* next;
     Node* prev;
 
-    Node(int new_data)
+    //run problem to make vectors with new moves, 
+    //then create a Node with the vector and point it to the parent/old node
+    Node(vector<int> new_data)
     {
         data = new_data;
         next = nullptr; 
     }
+    Node(vector<int> new_data, Node* old_data)
+    {
+        data = new_data;
+        prev = old_data;
+        next = nullptr; 
+    }
+    void printV();
 };
 
 
-#endif NODE_H_
+#endif //NODE_H_
