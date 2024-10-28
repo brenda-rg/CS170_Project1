@@ -12,6 +12,9 @@ using namespace std;
 struct Node {
 
     vector<int> data;
+    int gn = 0;
+    int hn = 0;
+    int fn = 0;
     Node* next;
     Node* prev;
 
