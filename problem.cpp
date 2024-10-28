@@ -37,7 +37,7 @@ queue<Node*> Problem::expandNode() {
     queue<Node*> q; //queue with children of the current node;
     if (!head) {
         cout << "List is empty." << endl;
-        return;
+        return q;
     }
 
     Node* temp = head;
