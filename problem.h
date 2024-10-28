@@ -25,7 +25,7 @@ class Problem {
         Problem(vector<int> init);
         vector<int> initialState;
         vector<int> goalState = {1,2,3,4,5,6,7,8,0};
-        queue <Node*> expandNode();
+        queue <Node*> expandNode(Node* oldNode);
         bool checksolution(vector<int>&);
         void printMoves();
 };
