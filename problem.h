@@ -6,7 +6,7 @@
 #include <queue>
 #include <list>
 #include <string>
-#include "node.h"
+#include "node.cpp"
 using namespace std;
 
 class Problem {
@@ -25,7 +25,7 @@ class Problem {
         Problem(vector<int> init);
         vector<int> initialState;
         vector<int> goalState = {1,2,3,4,5,6,7,8,0};
-        void expandNode();
+        queue <Node*> expandNode();
         bool checksolution(vector<int>&);
         void printMoves();
 };

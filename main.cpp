@@ -21,8 +21,11 @@ int main() {
     int var;
 
     cout << endl <<"Welcome to XXX (change this to your student ID) 8 puzzle solver." << endl
-    << "Type “1” to use a default puzzle, or “2” to enter your own puzzle." << endl
-    << "Enter your puzzle, use a zero to represent the blank" << endl
+    << "Type “1” to use a default puzzle, or “2” to enter your own puzzle." << endl;
+    cin >> var;
+    if (var == 2) {
+
+    cout << "Enter your puzzle, use a zero to represent the blank" << endl
     << "Enter the first row, use space or tabs between numbers" << endl;
     for(int i = 0; i < 3; i++) {
         cin >> var;
@@ -38,6 +41,9 @@ int main() {
         cin >> var;
         row1.push_back(var);
     }
+    // check if valid (ie: no repeats and values only from 0-9)
+    //throw exception?
+
 
 
     cout << endl << "Enter your choice of algorithm (Please type the number of your choice)" << endl

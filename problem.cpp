@@ -33,17 +33,17 @@ void Problem::print() {
     cout << "NULL" << endl; 
 };
 
-queue<Node*> Problem::expandNode() {
+queue<Node*> Problem::expandNode(Node* oldNode) {
     queue<Node*> q; //queue with children of the current node;
-    if (!head) {
+    /* if (!head) {
         cout << "List is empty." << endl;
         return q;
-    }
+    } */
 
-    Node* temp = head;
-    while (temp-> next != nullptr) {
+    Node* temp = oldNode;
+/*     while (temp-> next != nullptr) {
         temp = temp->next;
-    }
+    } */
     vector<int> nextMove = moveleft(temp->data);
     if (nextMove != temp->data) {
         addMove(head, temp->data, nextMove);
@@ -153,7 +153,7 @@ vector<int> Problem::moveleft(vector<int> currPos) {
     return newConfig;
 };
 
-//add expanded move to problem tree
+//add expanded move to problem tree (just for creating a tree so ignore this for now)
 Node* Problem::addMove(Node* head, vector<int> oldData, vector<int> newData) {
         Node* curr = head;
         while (curr != nullptr) {
