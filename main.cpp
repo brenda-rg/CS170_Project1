@@ -14,7 +14,7 @@ using namespace std;
 int main() {
     //default 8-puzzle positions
     //ignore this(for testing so far)
-    vector<int> startConfig{4,1,2,3,0,5,6,7,8};
+    vector<int> startConfig{1,2,0,4,5,3,7,8,6};
     cout << endl <<"If you have a configuration please input the configuration values separated by commas from left to right and row by row"
     << endl << "Input the blank space as 0.\n\n" 
     << "For example an for an 8 puzzle that looks like this: \n\n2  4  6" << endl 
