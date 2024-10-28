@@ -1,12 +1,7 @@
 #ifndef PROBLEM_CPP_
 #define PROBLEM_CPP_
 
-#include <iostream>
-#include <vector>
 #include <queue>
-#include <list>
-#include <string>
-#include "node.cpp"
 #include "problem.h"
 
 using namespace std;
@@ -38,7 +33,8 @@ void Problem::print() {
     cout << "NULL" << endl; 
 };
 
-void Problem::expandNode() {
+queue<Node*> Problem::expandNode() {
+    queue<Node*> q; //queue with children of the current node;
     if (!head) {
         cout << "List is empty." << endl;
         return;
@@ -51,20 +47,25 @@ void Problem::expandNode() {
     vector<int> nextMove = moveleft(temp->data);
     if (nextMove != temp->data) {
         addMove(head, temp->data, nextMove);
+        q.push(addMove(head, temp->data, nextMove));
     }
     nextMove = moveright(temp->data);
     if (nextMove != temp->data) {
         addMove(head, temp->data, nextMove);
+        q.push(addMove(head, temp->data, nextMove));
     }
     nextMove = moveup(temp->data);
     if (nextMove != temp->data) {
         addMove(head, temp->data, nextMove);
+        q.push(addMove(head, temp->data, nextMove));
     }
     nextMove = movedown(temp->data);
     if (nextMove != temp->data) {
         addMove(head, temp->data, nextMove);
+        q.push(addMove(head, temp->data, nextMove));
     }
     cout << "done adding new moves..." << endl;
+    return q;
 
 };
 
@@ -80,7 +81,7 @@ void Problem::expandNode() {
       0  1  2
       0  1  2 }
     
-    */
+*/
    
 //operations
 vector<int> Problem::moveup(vector<int> currPos) {
@@ -167,7 +168,7 @@ Node* Problem::addMove(Node* head, vector<int> oldData, vector<int> newData) {
         Node* newNode = new Node(newData);
         newNode->next = curr->next;
         curr->next = newNode;
-        return head;
+        return newNode;
     };
 
 #endif //PROBLEM_CPP_

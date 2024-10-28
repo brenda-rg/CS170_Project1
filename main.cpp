@@ -15,7 +15,37 @@ int main() {
     //default 8-puzzle positions
     //ignore this(for testing so far)
     vector<int> startConfig{1,2,0,4,5,3,7,8,6};
-    cout << endl <<"If you have a configuration please input the configuration values separated by commas from left to right and row by row"
+    vector<int> row1;
+    vector<int> row2;
+    vector<int> row3;
+    int var;
+
+    cout << endl <<"Welcome to XXX (change this to your student ID) 8 puzzle solver." << endl
+    << "Type “1” to use a default puzzle, or “2” to enter your own puzzle." << endl
+    << "Enter your puzzle, use a zero to represent the blank" << endl
+    << "Enter the first row, use space or tabs between numbers" << endl;
+    for(int i = 0; i < 3; i++) {
+        cin >> var;
+        row1.push_back(var);
+    }
+    cout << endl << "Enter the second row, use space or tabs between numbers" << endl;
+    for(int i = 0; i < 3; i++) {
+        cin >> var;
+        row1.push_back(var);
+    }
+    cout << endl << "Enter the third row, use space or tabs between numbers" << endl;
+    for(int i = 0; i < 3; i++) {
+        cin >> var;
+        row1.push_back(var);
+    }
+
+
+    cout << endl << "Enter your choice of algorithm (Please type the number of your choice)" << endl
+    << "1. Uniform Cost Search" << endl
+    << "2. A* with the Misplaced Tile heuristic." << endl
+    << "3. A* with the Euclidean distance heuristic" << endl
+
+    << "If you have a configuration please input the configuration values separated by commas from left to right and row by row"
     << endl << "Input the blank space as 0.\n\n" 
     << "For example an for an 8 puzzle that looks like this: \n\n2  4  6" << endl 
     << "5  7  8" << endl
