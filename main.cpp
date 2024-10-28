@@ -16,7 +16,6 @@ int main() {
     cout << "testing..." << endl;
     cout << "Welcome to 862228377 8 puzzle solver." << endl;
     cout << "Type '1' to use a default puzzle, or '2' to enter your own puzzle." << endl;
-    cin int;
-    if (int = 1 )
+
     return 0;
 }
