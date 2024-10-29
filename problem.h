@@ -11,7 +11,7 @@ using namespace std;
 
 class Problem {
     private:
-        Node* head;
+        //Node* head;
         vector<int> defaultState = {3,2,1,4,8,7,6,5,0};
         void print();
         Node* addMove(Node* head, vector<int> pos, vector<int> newData);
@@ -21,6 +21,7 @@ class Problem {
         vector<int> moveleft(vector<int>);
 
     public:
+        Node* head;
         Problem();
         Problem(vector<int> init);
         vector<int> initialState;
