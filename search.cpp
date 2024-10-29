@@ -18,6 +18,7 @@ void searchQ::UCS(Problem goal) {
     //check if empty and pop from search q
     //else pop
     //while empty or find solution
+    searchQ.push(goal.head);
     if (searchQ.empty()) {
         cout << "failure";
         exit(0);
@@ -29,6 +30,7 @@ void searchQ::UCS(Problem goal) {
                 exit(0);
             }
             else {
+                 QTraverse(goal.expandNode(goal.head));
                 searchQ.pop();
             }
         }

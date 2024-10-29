@@ -7,10 +7,10 @@ using namespace std;
 
 class searchQ {
     public:
-
-    private:
-        queue<Node*> searchQ;
+ queue<Node*> searchQ;
         void QTraverse(queue<Node*>);
         void UCS(Problem);
+    private:
+       
         
 };

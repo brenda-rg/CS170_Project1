@@ -1,4 +1,3 @@
-//main file
 #include <iostream>
 #include <fstream>
 #include <ostream>
@@ -9,6 +8,7 @@
 #include <cstring>
 #include <math.h>
 #include "problem.cpp"
+#include "search.cpp"
 using namespace std;
 
 int main() {
@@ -19,9 +19,12 @@ int main() {
     vector<int> row2;
     vector<int> row3;
     int var;
+    int integer;
+    searchQ searchnode;
+    Problem p = Problem(startConfig);
 
     cout << endl <<"Welcome to XXX (change this to your student ID) 8 puzzle solver." << endl
-    << "Type “1” to use a default puzzle, or “2” to enter your own puzzle." << endl;
+    << "Type '1' to use a default puzzle, or '2' to enter your own puzzle." << endl;
     cin >> var;
     if (var == 2) {
 
@@ -51,6 +54,21 @@ int main() {
     << "1. Uniform Cost Search" << endl
     << "2. A* with the Misplaced Tile heuristic." << endl
     << "3. A* with the Euclidean distance heuristic" << endl;
+
+    cin >> integer;
+    if (integer = 1){
+        //run unifrom cost seach 
+       //searchnode.QTraverse();
+       searchnode.UCS(p);
+    }
+    /*if (integer = 2)
+    {
+        // run A* with misplaced Tile
+    }
+    else {
+        //run A* with euclidean distance 
+    }*/
+
 /* 
     << "If you have a configuration please input the configuration values separated by commas from left to right and row by row"
     << endl << "Input the blank space as 0.\n\n" 

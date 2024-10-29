@@ -107,6 +107,10 @@ vector<int> Problem::movedown(vector<int> currPos){
         if(newConfig.at(i) == 0){
             //if below the first row then swap the blank and the value above
             if(i < 6) {
+                // if the 0 is in the 6th position 
+                /*123
+                240 //0 is in the 6th position 
+                568*/
                 int temp = newConfig.at(i+3);
                 newConfig.at(i+3) = 0;
                 newConfig.at(i) = temp;
