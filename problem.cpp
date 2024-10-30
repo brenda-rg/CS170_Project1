@@ -2,20 +2,21 @@
 #define PROBLEM_CPP_
 
 #include "problem.h"
+#include <iostream>
 
 using namespace std;
 
 //default constructor
 Problem::Problem() {
     head = new Node(defaultState);
-    pair<vector<int>,bool> p1 (defaultState, true);
+    pair<vector<int>,int> p1 (defaultState, 0);
     visited.insert(p1);
 };
 
 //constructor given starting state
 Problem::Problem(vector<int> init) {
     head = new Node(init);
-    pair<vector<int>,int> p1 (init, 1);
+    pair<vector<int>,int> p1 (init, 0);
     visited.insert(p1);
 };
 
@@ -35,21 +36,20 @@ Problem::Problem(vector<int> init) {
 */
    
 //operations
-vector<int> Problem::moveup(vector<int> currPos) {
-    vector<int> newConfig = currPos;
+vector<int> Problem::moveup(vector<int> curr) {
     for(int i = 0; i < 9; i++){
-        if(newConfig.at(i) == 0){
+        if(curr.at(i) == 0){
             //if below the first row then swap the blank and the value above
             if(i > 2) {
-                int temp = newConfig.at(i-3);
-                newConfig.at(i-3) = 0;
-                newConfig.at(i) = temp;
+                int temp = curr.at(i-3);
+                curr.at(i-3) = 0;
+                curr.at(i) = temp;
                 //cout <<"--TEST func() moveup--" << endl;
                 break;
             }
         }
     }
-    return newConfig;
+    return curr;
 };
 
 vector<int> Problem::movedown(vector<int> currPos){
@@ -113,7 +113,7 @@ Node* Problem::getHead() {
 };
 
 //expand the current node
-queue<Node*> Problem::expandNode(Node* oldNode) {
+queue<Node*> Problem::expandNode(Node* oldNode, int choice) {
     queue<Node*> q; //queue with children of the current node;
 
     if (!head) {
@@ -128,30 +128,37 @@ queue<Node*> Problem::expandNode(Node* oldNode) {
     for(int i = 0; i < 4; i++) {
         repeat = false;
         if(i == 0){
-            nextMove = moveleft(oldNode->data);
-        }
-        else if(i == 1) {
-            nextMove = moveright(oldNode->data);
-        }
-        else if(i == 2) {
-            nextMove = moveup(oldNode->data);
-        }
-        else {
             nextMove = movedown(oldNode->data);
         }
+        else if(i == 1) {
+            nextMove = moveup(oldNode->data);
+        }
+        else if(i == 2) {
+            nextMove = moveleft(oldNode->data);
+        }
+        else {
+            nextMove = moveright(oldNode->data);
+        }
 
-        if(visited.find(nextMove) != visited.end()) {
+        if(visited.count(nextMove)) {
             repeat = true;
         }
         //cout << "--------------" <<  repeat <<endl;
         if (!repeat) { // if not a repeat then add to queues
-            //Node* newMove = addMove(head, temp->data, nextMove);
+            //printVect(nextMove);
+            //cout << endl;
             Node* newMove= new Node(nextMove, oldNode);
+            if(choice == 2) {
+            newMove->hn = newMove->misplacedH();
+            newMove->fn = newMove->gn + newMove->hn;
+            }
             (oldNode->children).push_back(newMove);
-            pair<vector<int>, bool> p1 (nextMove, true);
+            pair<vector<int>, int> p1 (nextMove, 0);
             visited.insert(p1);
+            visited.at(oldNode->data) = 1;
             cout << "New move added: " << endl;
-            newMove->printV();
+            //cout << "Current map values: " << endl;
+            //outMap();
             cout << endl;
             q.push(newMove);
         }
@@ -176,5 +183,28 @@ void Problem::printPath(Node* curr) {
         path.pop();
     }
 };
+
+//for debugging map
+void Problem::outMap() {
+    map<vector<int>, int>::iterator it;
+    int i = 0;
+
+    for (it = visited.begin(); it != visited.end(); it++)
+    {
+        cout << i << ") ";
+        printVect(it->first);    // string (key)
+        cout << ':'
+        << it->second;   // string's value 
+        cout << std::endl;
+        cout << std::endl;
+    }
+};
+
+void Problem::printVect(vector<int> v) {
+    for (auto & element : v) {
+        cout << element << ", ";
+    }
+    cout << endl;
+}
 
 #endif //PROBLEM_CPP_

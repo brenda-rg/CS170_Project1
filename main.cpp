@@ -53,19 +53,9 @@ int main() {
     cin >> var;
     while(true) {
 
-        if(var == 1) {
-            search.UCS(p);
-            cout << "test1" << endl;
-            break;
-        }
-
-        else if(var == 2) {
-            cout << "test" << endl;
-            break;
-        }
-
-        else if(var == 3) {
-            cout << "test" << endl;
+        if(var == 1 || var == 2 || var == 3) {
+            search.QTraverse(p,var);
+            cout << "testing algorithm " << var << endl;
             break;
         }
         else {

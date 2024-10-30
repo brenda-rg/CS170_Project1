@@ -4,11 +4,26 @@
 #include "node.h"
 using namespace std;
 
+Node::Node() {
+        parent = nullptr;
+        gn =0;
+        hn = 0;
+        fn = 0;
+};
+/* Node::Node(Node* oldNode) {
+    parent = oldNode->parent;
+    data = oldNode->data;
+    gn = oldNode->gn;
+    gn = oldNode->hn;
+    fn = oldNode->fn;
+
+}; */
+
 // basic/start config constructor
 Node::Node(vector<int> new_data) {
         data = new_data;
         parent = nullptr;
-        fn = gn+hn;
+        gn = 0;
 };
 
 //constructor for expanded nodes
@@ -16,7 +31,6 @@ Node::Node(vector<int> new_data, Node* oldData) {
         data = new_data;
         parent = oldData;
         gn = oldData->gn + 1; 
-        fn = gn+hn;
 };
 
 //print node data in 8 puzzle format
@@ -32,6 +46,22 @@ void Node::printV() {
         }
     }
     cout << endl;
+};
+
+int Node::misplacedH() {
+    int count = 0;
+    for(int i = 0; i < data.size(); i++ ) {
+        if(data.at(i) != i+1) {
+            count +=1;
+        }
+    }
+    return count;
+};
+
+int Node::euclideanH() {
+    int count = 0;
+
+    return count;
 };
 
 #endif //NODE_CPP_
