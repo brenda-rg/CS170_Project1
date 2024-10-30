@@ -8,9 +8,14 @@ using namespace std;
 class searchQ {
     public:
  queue<Node*> searchQ;
+    void UCS(Problem);
+
+    private:
+        queue<Node*> searchQ;
         void QTraverse(queue<Node*>);
         void UCS(Problem);
     private:
        
+        
         
 };
