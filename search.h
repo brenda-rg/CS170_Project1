@@ -5,27 +5,15 @@
 #include "problem.cpp"
 using namespace std;
 
-struct node_cmp
-{
-   bool operator()( const Node* a, const Node* b ) const 
-   {
-    return a->fn < b->fn;
-   }
-};
 
 class searchQ {
     public:
- queue<Node*> searchQ;
-    void UCS(Problem);
-    void MTH(Problem);
+    void QTraverse(Problem, int);
+    void MTH(queue<Node*> travNode);
     void EDH(Problem);
+    void UCS(queue<Node*>);
     
     private:
-        priority_queue<Node*, vector<Node*>, node_cmp> searchQ;
-        void QTraverse(queue<Node*>);
-        void UCS(Problem);
-    private:
+    queue <Node*> searchQ;
        
-        
-        
 };

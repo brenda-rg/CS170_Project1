@@ -34,4 +34,14 @@ void Node::printV() {
     cout << endl;
 };
 
+int Node::misplacedH() {
+    int mh = 0;
+    for (int i = 0; i < data.size(); i++) {
+        if (data.at(i) != (i + 1)) {
+            ++mh;
+        }
+    }
+    return mh;
+};
+
 #endif //NODE_CPP_
