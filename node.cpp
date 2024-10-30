@@ -8,6 +8,7 @@ using namespace std;
 Node::Node(vector<int> new_data) {
         data = new_data;
         parent = nullptr;
+        fn = gn+hn;
 };
 
 //constructor for expanded nodes
@@ -15,6 +16,7 @@ Node::Node(vector<int> new_data, Node* oldData) {
         data = new_data;
         parent = oldData;
         gn = oldData->gn + 1; 
+        fn = gn+hn;
 };
 
 //print node data in 8 puzzle format
