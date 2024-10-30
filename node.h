@@ -29,6 +29,12 @@ struct Node {
 
     //print the node data in 8 puzzle format where 0 represents the blank
     void printV();
+
+    //calculate the misplaced tile heuristic
+    int misplacedH();
+
+    //calculate the euclidean distance heuristic
+    int euclideanH();
 };
 
 

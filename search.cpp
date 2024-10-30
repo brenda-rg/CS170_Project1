@@ -23,17 +23,17 @@ void searchQ::UCS(Problem goal) {
     //QTraverse(goal.expandNode(goal.head));
     searchQ.push(goal.getHead());
     do {
-        if (searchQ.front()->data == goal.goalState) {
+        if (searchQ.top()->data == goal.goalState) {
             cout << "goal" << endl;
-            cout << "The best path with g(n) = " << searchQ.front()->gn <<endl;
-            goal.printPath(searchQ.front());
+            cout << "The best path with g(n) = " << searchQ.top()->gn <<endl;
+            goal.printPath(searchQ.top());
             exit(0);
         }
         else {
-            cout << "The best state to expand with g(n) = " << searchQ.front()->gn << " is:" << endl;
-            searchQ.front()->printV();
+            cout << "The best state to expand with g(n) = " << searchQ.top()->gn << " is:" << endl;
+            searchQ.top()->printV();
             cout << "Expanding..." << endl;
-            QTraverse(goal.expandNode(searchQ.front()));
+            QTraverse(goal.expandNode(searchQ.top()));
             searchQ.pop();
         }
     }
