@@ -21,7 +21,7 @@ void searchQ::UCS(Problem goal) {
     //else pop
     //while empty or find solution
     //QTraverse(goal.expandNode(goal.head));
-    searchQ.push(goal.head);
+    searchQ.push(goal.getHead());
     do {
         if (searchQ.front()->data == goal.goalState) {
             cout << "goal" << endl;
