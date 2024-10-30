@@ -17,7 +17,7 @@ int main() {
 
     cout << endl <<"Welcome to XXX (change this to your student ID) 8 puzzle solver." << endl
     << "Type '1' to use a default puzzle, or '2' to enter your own puzzle." << endl;
-    << "Type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle." << endl;
+    cout << "Type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle." << endl;
 
     cin >> var;
     if (var == 2) {
