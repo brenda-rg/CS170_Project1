@@ -1,14 +1,25 @@
 #ifndef NODE_CPP_
 #define NODE_CPP_
-// node data structure file
-#include <iostream>
-#include <list>
-#include <vector>
-#include <string>
+
 #include "node.h"
 using namespace std;
 
-//basic node struct we can change as we implement
+// basic/start config constructor
+Node::Node(vector<int> new_data) {
+        data = new_data;
+        parent = nullptr;
+        fn = gn+hn;
+};
+
+//constructor for expanded nodes
+Node::Node(vector<int> new_data, Node* oldData) {
+        data = new_data;
+        parent = oldData;
+        gn = oldData->gn + 1; 
+        fn = gn+hn;
+};
+
+//print node data in 8 puzzle format
 void Node::printV() {
     vector<int> v = data;
     for (int i = 0;i < 9; i++) {

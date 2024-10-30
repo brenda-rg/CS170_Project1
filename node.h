@@ -1,8 +1,8 @@
 #ifndef NODE_H_
 #define NODE_H_
+
 // node data structure file
 #include <iostream>
-#include <list>
 #include <vector>
 #include <string>
 using namespace std;
@@ -10,28 +10,31 @@ using namespace std;
 //basic node struct we can change as we implement
 
 struct Node {
-
-    vector<int> data;
+    vector<int> data; //stores current state of 8 puzzle
+    //costs
     int gn = 0;
     int hn = 0;
-    int fn = 0;
-    Node* next;
-    Node* prev;
+    int fn = gn+hn;
+    Node* parent; //parent of current node
+    vector<Node*> children; //children of current state (ie. valid operations after expanding)
 
-    //run problem to make vectors with new moves, 
-    //then create a Node with the vector and point it to the parent/old node
-    Node(vector<int> new_data)
-    {
-        data = new_data;
-        next = nullptr; 
-    }
-    Node(vector<int> new_data, Node* old_data)
-    {
-        data = new_data;
-        prev = old_data;
-        next = nullptr; 
-    }
+    //
+
+    //create a node for the current state of the 8 puzzle, parent unknown
+    //should only be used for start configuration
+    Node(vector<int> new_data);
+
+    //create a node for the current state of the 8 puzzle, after expanding parent node
+    Node(vector<int> new_data, Node* oldData);
+
+    //print the node data in 8 puzzle format where 0 represents the blank
     void printV();
+
+    //calculate the misplaced tile heuristic
+    int misplacedH();
+
+    //calculate the euclidean distance heuristic
+    int euclideanH();
 };
 
 
