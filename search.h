@@ -12,8 +12,10 @@ class searchQ {
     void MTH(queue<Node*> travNode);
     void EDH(Problem);
     void UCS(queue<Node*>);
+    vector<Node* > QToV;
     
     private:
     queue <Node*> searchQ;
+    void sortQ(queue<Node*>);
        
 };

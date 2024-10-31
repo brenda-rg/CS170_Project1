@@ -75,3 +75,20 @@ void searchQ::MTH(queue<Node*> travNode) {
         travNode.pop();
     }
 }
+
+void searchQ::sortQ(queue<Node*> QtoSort) {
+    QtoSort = searchQ;
+    int i = 0;
+
+    while (!QtoSort.empty()) {
+        QToV.at(i) = QtoSort.front();
+        QtoSort.pop();
+        i++;        
+    }
+
+    for (int c = 0; c < QtoSort.size() - 1; c++) {
+        if (QToV.at(i)->fn > QToV.at(i + 1)->fn) {
+            swap(QToV.at(i), QToV.at(i + 1));
+        }
+    }
+}
