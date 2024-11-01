@@ -16,7 +16,7 @@ int main() {
     searchQ searchnode;
     p = Problem(startConfig);
 
-    cout << endl <<"Welcome to XXX (change this to your student ID) 8 puzzle solver." << endl
+    cout << endl <<"Welcome to the 8 puzzle solver." << endl
     << "Type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle." << endl;
 
     cin >> var;
@@ -46,8 +46,7 @@ int main() {
     else {
         p = Problem();
     }
-    // check if valid (ie: no repeats and values only from 0-9)
-    //throw exception?
+    
     searchQ search;
 
     cout << endl << "Enter your choice of algorithm (Please type the number of your choice)" << endl
