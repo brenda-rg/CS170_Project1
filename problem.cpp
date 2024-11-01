@@ -117,8 +117,9 @@ Node* Problem::getHead() {
 };
 
 //expand the current node
-queue<Node*> Problem::expandNode(Node* oldNode) {
+queue<Node*> Problem::expandNode(Node* oldNode, int option) {
     queue<Node*> q; //queue with children of the current node;
+    
 
     if (!head) {
         cout << "List is empty." << endl;
@@ -151,6 +152,10 @@ queue<Node*> Problem::expandNode(Node* oldNode) {
         if (!repeat) { // if not a repeat then add to queues
             //Node* newMove = addMove(head, temp->data, nextMove);
             Node* newMove= new Node(nextMove, oldNode);
+            if (option == 2){
+                newMove->hn = newMove->misplacedH();
+                newMove->fn = newMove->gn + newMove->hn;
+            }
             (oldNode->children).push_back(newMove);
             pair<vector<int>, bool> p1 (nextMove, true);
             visited.insert(p1);
