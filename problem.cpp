@@ -154,11 +154,11 @@ queue<Node*> Problem::expandNode(Node* oldNode, int option) {
             Node* newMove= new Node(nextMove, oldNode);
             if (option == 2){
                 newMove->hn = newMove->misplacedH();
-                newMove->fn = newMove->gn + newMove->hn;
+                // newMove->fn = newMove->gn + newMove->hn;
             }
             if (option == 3){
                 newMove->hn = newMove->euclideanH();
-                newMove->fn = newMove->gn + newMove->hn;
+                // newMove->fn = newMove->gn + newMove->hn;
             }
             (oldNode->children).push_back(newMove);
             pair<vector<int>, bool> p1 (nextMove, true);
