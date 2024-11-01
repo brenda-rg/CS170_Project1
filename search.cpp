@@ -79,7 +79,6 @@ void searchQ::QTraverse(Problem goal, int choice) {
 //     }
 // }
 
-//MTH modified for priority queue 
 
 struct Compare{
     bool operator()(Node* a, Node* b){
