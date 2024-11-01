@@ -7,19 +7,21 @@
 #include <string>
 using namespace std;
 
+
 //basic node struct we can change as we implement
 
 struct Node {
     vector<int> data; //stores current state of 8 puzzle
     //costs
-    int gn = 0;    //gn = how many are done 
-    int hn = 0;    // hn = how many are left 
-    int fn = gn+hn;
-    Node* parent; //parent of current node
+    int gn =0;
+    double hn = 0;
+    double fn = 0;
+    Node* parent = nullptr; //parent of current node
     vector<Node*> children; //children of current state (ie. valid operations after expanding)
 
     //
-
+    Node();
+    //Node(Node*);
     //create a node for the current state of the 8 puzzle, parent unknown
     //should only be used for start configuration
     Node(vector<int> new_data);
@@ -34,7 +36,9 @@ struct Node {
     int misplacedH();
 
     //calculate the euclidean distance heuristic
-    int euclideanH();
+    double euclideanH();
+
+    double calculateDist(int, int);
 };
 
 

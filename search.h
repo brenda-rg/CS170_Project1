@@ -10,17 +10,11 @@ class searchQ {
     public:
     void QTraverse(Problem, int); //
     void MTH(queue<Node*> travNode);
-    void EDH(Problem);
+    void EDH(queue<Node*>);
     void UCS(queue<Node*>);
     
     
     private:
     queue <Node*> searchQ;
        
-};
-
-struct Compare{
-    bool operator()(Node* a, Node* b){
-    return a->fn > b->fn;
-}
 };

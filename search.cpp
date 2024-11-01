@@ -9,7 +9,6 @@ using namespace std;
 void searchQ::UCS(queue<Node*> travNode) {
 
     //until queue is empty, push travNode into searchQ and pop head of travNode
-    cout << "Adding " << travNode.size() << " states" << endl;
     while (!travNode.empty()) {
         searchQ.push(travNode.front());
         travNode.pop();
@@ -17,33 +16,53 @@ void searchQ::UCS(queue<Node*> travNode) {
 }
 
 void searchQ::QTraverse(Problem goal, int choice) {
+    int numExpanded = 0;
     //check if empty and pop from search q
     //else pop
     //while empty or find solution
     //QTraverse(goal.expandNode(goal.head));
+    if (choice == 2){
+     goal.getHead()->hn = goal.getHead()->misplacedH();
+    }
+    if (choice == 3){
+        goal.getHead()->hn = goal.getHead()->euclideanH();
+    }
     searchQ.push(goal.getHead());
+    
     do {
-        if (searchQ.front()->data == goal.goalState) {
-            cout << "goal" << endl;
-            cout << "The best path with g(n) = " << searchQ.front()->gn <<endl;
-            cout << "The misplaced tiles h(n) = " << searchQ.front()->hn << endl;
-            goal.printPath(searchQ.front());
+       Node* newnode = searchQ.front();
+       
+
+        if (newnode->data == goal.goalState) {
+            newnode->printV();
+            cout << "GOAL!!!" << endl
+            << "Number of nodes expanded: " << numExpanded << endl
+            << "Number of nodes in queue: " << searchQ.size() << endl;
+            cout << "The best path with g(n) = " << newnode->gn
+            << " and h(n) = " << newnode->hn << endl;
+            goal.printPath(newnode);
             exit(0);
         }
         else {
-            cout << "The best state to expand with g(n) = " << searchQ.front()->gn << " is:" << endl;
-            searchQ.front()->printV();
+            searchQ.pop();
+            cout << "The best state to expand with g(n) = " << newnode->gn <<  " and h(n) = " <<  newnode->hn << " is:" << endl;
+            cout << "The best state to expand with f(n) = " << newnode->fn << endl;
+            newnode->printV();
             cout << "Expanding..." << endl;
+            numExpanded +=1;
             if (choice == 1) {
-                UCS(goal.expandNode(searchQ.front(),1));
+                UCS(goal.expandNode(newnode,1));
             }
             if (choice == 2) {
-                cout << "The misplaced tiles h(n) = " << searchQ.front()->hn << endl;
-                MTH(goal.expandNode(searchQ.front(),2));
+                cout << "The misplaced tiles h(n) = " << newnode->hn << endl;
+                MTH(goal.expandNode(newnode,2));
                
             }
-        
-            searchQ.pop();
+            if (choice == 3) {
+                cout << "The euclidean distance h(n) = " << newnode->hn << endl;
+                EDH(goal.expandNode(newnode,3));
+            }
+            
         }
     }
     while(!searchQ.empty());
@@ -53,44 +72,25 @@ void searchQ::QTraverse(Problem goal, int choice) {
     }
 }
 
-// void searchQ::MTH(queue<Node*> travNode) {
-
-//     UCS(travNode);
-//     queue<Node*> temp = searchQ;
-//     Node* tempNode = searchQ.front();
-//     Node* hold;
-//     temp.pop();
-
-//     while (!temp.empty()) {
-//         while (!temp.empty()) {
-//             if (tempNode->hn > temp.front()->hn) {
-//                 hold = tempNode;
-//                 tempNode = temp.front();
-//                 temp.front() = hold;
-//             }
-//             temp.pop();
-//         }
-//         // store heuristic value
-//         travNode.front()->misplacedH();
-//         // push this value to front of searchQ
-//         searchQ.push(travNode.front());
-//         //pop travNode front value
-//         travNode.pop();
-//     }
-// }
-
-
 
 void searchQ::MTH(queue<Node*>travNode){
-    priority_queue<Node*> prior_q;
+   // priority_queue<Node*> prior_q;
+    //vector < Node*> prior_v;
+    priority_queue<Node*, vector<Node*> , Compare> prior_q;
     vector < Node*> prior_v;
-while(!travNode.empty()) {
-    Node* node = travNode.front();
-    node->misplacedH();
+    while (!travNode.empty()) {
+        searchQ.push(travNode.front());
+        travNode.pop();
+    }
+while(!searchQ.empty()) {
+
+    Node* node = searchQ.front();
+    //searchQ.push(travNode.front());
+    //node->hn = node->misplacedH();
     node->fn = node ->gn + node->hn ;
     //priority queue would be pushed 
     prior_q.push(node);
-    travNode.pop();
+    searchQ.pop();
 }
 
 // while the prior queue is not empty we can take the prior queue and we replace it with the prior 
@@ -98,4 +98,28 @@ while(!prior_q.empty()){
     searchQ.push(prior_q.top());
     prior_q.pop();
 }
+}
+
+void searchQ::EDH(queue<Node*>travNode){
+    //UCS(travNode);
+    priority_queue<Node*, vector<Node*> , Compare> prior_q;
+    vector < Node*> prior_v;
+     while (!travNode.empty()) {
+        searchQ.push(travNode.front());
+        travNode.pop();
+    }
+    while(!searchQ.empty()) {
+        Node* node = searchQ.front();
+            //node->hn = node->euclideanH();
+            node->fn = node ->gn + node->hn ;
+        //priority queue would be pushed 
+        prior_q.push(node);
+        searchQ.pop();
+    }
+
+    // while the prior queue is not empty we can take the prior queue and we replace it with the prior 
+    while(!prior_q.empty()){
+        searchQ.push(prior_q.top());
+        prior_q.pop();
+    }
 }

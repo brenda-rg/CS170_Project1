@@ -1,4 +1,5 @@
 //main file
+#include <iostream>
 #include "search.cpp"
 using namespace std;
 
@@ -69,6 +70,7 @@ int main() {
         }
 
         else if(var == 3) {
+            search.QTraverse(p, 3);
             cout << "test 3" << endl;
             break;
         }

@@ -145,7 +145,7 @@ queue<Node*> Problem::expandNode(Node* oldNode, int option) {
             nextMove = movedown(oldNode->data);
         }
 
-        if(visited.find(nextMove) != visited.end()) {
+        if(visited.count(nextMove) != 0) {
             repeat = true;
         }
         //cout << "--------------" <<  repeat <<endl;
@@ -154,14 +154,15 @@ queue<Node*> Problem::expandNode(Node* oldNode, int option) {
             Node* newMove= new Node(nextMove, oldNode);
             if (option == 2){
                 newMove->hn = newMove->misplacedH();
-                newMove->fn = newMove->gn + newMove->hn;
+                // newMove->fn = newMove->gn + newMove->hn;
+            }
+            if (option == 3){
+                newMove->hn = newMove->euclideanH();
+                // newMove->fn = newMove->gn + newMove->hn;
             }
             (oldNode->children).push_back(newMove);
             pair<vector<int>, bool> p1 (nextMove, true);
             visited.insert(p1);
-            cout << "New move added: " << endl;
-            newMove->printV();
-            cout << endl;
             q.push(newMove);
         }
     } 
