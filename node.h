@@ -14,8 +14,8 @@ struct Node {
     vector<int> data; //stores current state of 8 puzzle
     //costs
     int gn =0;
-    int hn = 0;
-    int fn = 0;
+    double hn = 0;
+    double fn = 0;
     Node* parent = nullptr; //parent of current node
     vector<Node*> children; //children of current state (ie. valid operations after expanding)
 
