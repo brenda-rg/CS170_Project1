@@ -45,7 +45,6 @@ int Node::misplacedH() {
         else if (data.at(i) != (i + 1)) {
             ++mh;
         }
-        //cout << "misplaced: " << mh << endl;
     }
     hn = mh;
     fn = gn + hn;
@@ -58,7 +57,6 @@ double Node::euclideanH() {
     double count = 0;
     for(int i = 0; i  < data.size(); i++) {
         count = count + calculateDist(i, data.at(i));
-        //cout << "distance: " << count << endl;
     }
     hn = count;
     fn = gn + hn;
@@ -82,7 +80,7 @@ double Node::euclideanH() {
     
 */
 
-double Node::calculateDist(int currpos, int num) { //giv e the vector position and the value of the number at that position
+double Node::calculateDist(int currpos, int num) { //give the vector position and the value of the number at that position
     if(num == 0) num = 9;
     int currColumn = currpos%3; //column
     int currRow = currpos/3; // row

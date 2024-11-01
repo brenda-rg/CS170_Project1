@@ -23,24 +23,25 @@ int main() {
     if (var == 2) {
 
         cout << "Enter your puzzle, use a zero to represent the blank" << endl
-        << "Enter the first row, use space or tabs between numbers" << endl;
+        << "Enter the first row, use space or tabs between numbers  \t";
         for(int i = 0; i < 3; i++) {
             cin >> var;
             row1.push_back(var);
             startConfig.at(i) = var;
         }
-        cout << endl << "Enter the second row, use space or tabs between numbers" << endl;
+        cout << endl << "Enter the second row, use space or tabs between numbers  \t";
         for(int i = 0; i < 3; i++) {
             cin >> var;
             row2.push_back(var);
             startConfig.at(i+3) = var;
         }
-        cout << endl << "Enter the third row, use space or tabs between numbers" << endl;
+        cout << endl << "Enter the third row, use space or tabs between numbers  \t";
         for(int i = 0; i < 3; i++) {
             cin >> var;
             row3.push_back(var);
             startConfig.at(i+6) = var;
         }
+        cout << endl;
         p = Problem(startConfig);
     }
     else {
@@ -49,38 +50,29 @@ int main() {
     
     searchQ search;
 
-    cout << endl << "Enter your choice of algorithm (Please type the number of your choice)" << endl
+    while(true) {
+        cout << endl << "Enter your choice of algorithm (Please type the number of your choice)" << endl
         << "1. Uniform Cost Search" << endl
         << "2. A* with the Misplaced Tile heuristic." << endl
         << "3. A* with the Euclidean distance heuristic" << endl;
-    cin >> var;
-    while(true) {
+        cin >> var;
 
         if(var == 1) {
             search.QTraverse(p, 1);
-            cout << "test1" << endl;
             break;
         }
 
         else if(var == 2) {
             search.QTraverse(p, 2);
-            cout << "test 2" << endl;
             break;
         }
 
         else if(var == 3) {
             search.QTraverse(p, 3);
-            cout << "test 3" << endl;
             break;
         }
         else {
-            cout << "Choice is invalid, please input onf of the choices below" << endl;
-            cout << endl << "Enter your choice of algorithm (Please type the number of your choice)" << endl
-            << "1. Uniform Cost Search" << endl
-            << "2. A* with the Misplaced Tile heuristic." << endl
-            << "3. A* with the Euclidean distance heuristic" << endl;
-            cin >> var;
-            
+            cout << "Choice is invalid, please input one of the choices below" << endl;
         }
     }
     return 0;

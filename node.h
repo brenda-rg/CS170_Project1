@@ -21,7 +21,6 @@ struct Node {
 
     //
     Node();
-    //Node(Node*);
     //create a node for the current state of the 8 puzzle, parent unknown
     //should only be used for start configuration
     Node(vector<int> new_data);
@@ -37,7 +36,7 @@ struct Node {
 
     //calculate the euclidean distance heuristic
     double euclideanH();
-
+    //helper function for euclideanH()
     double calculateDist(int, int);
 };
 

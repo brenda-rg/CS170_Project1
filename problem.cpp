@@ -20,19 +20,6 @@ Problem::Problem(vector<int> init) {
 };
 
 //PRIVATE
-//0 is the blank space
-/* for reference
-    vector index:
-    { 0  1  2
-      3  4  5
-      6  7  8 }
-
-    mod values:
-    { 0  1  2 
-      0  1  2
-      0  1  2 }
-    
-*/
    
 //operations
 vector<int> Problem::moveup(vector<int> currPos) {
@@ -44,7 +31,6 @@ vector<int> Problem::moveup(vector<int> currPos) {
                 int temp = newConfig.at(i-3);
                 newConfig.at(i-3) = 0;
                 newConfig.at(i) = temp;
-                //cout <<"--TEST func() moveup--" << endl;
                 break;
             }
         }
@@ -65,7 +51,6 @@ vector<int> Problem::movedown(vector<int> currPos){
                 int temp = newConfig.at(i+3);
                 newConfig.at(i+3) = 0;
                 newConfig.at(i) = temp;
-                //cout <<"--TEST func() movedown--" << endl;
                 break;
                 
             }
@@ -84,7 +69,6 @@ vector<int> Problem::moveright(vector<int> currPos) {
                 int temp = newConfig.at(i+1);
                 newConfig.at(i+1) = 0;
                 newConfig.at(i) = temp;
-                //cout <<"--TEST func() moveright--" << endl;
                 break;
             }
         }
@@ -101,7 +85,6 @@ vector<int> Problem::moveleft(vector<int> currPos) {
                 int temp = newConfig.at(i-1);
                 newConfig.at(i-1) = 0;
                 newConfig.at(i) = temp;
-                //cout <<"--TEST func() moveleft--" << endl;
                 break;
             }
         }
@@ -148,17 +131,13 @@ queue<Node*> Problem::expandNode(Node* oldNode, int option) {
         if(visited.count(nextMove) != 0) {
             repeat = true;
         }
-        //cout << "--------------" <<  repeat <<endl;
         if (!repeat) { // if not a repeat then add to queues
-            //Node* newMove = addMove(head, temp->data, nextMove);
             Node* newMove= new Node(nextMove, oldNode);
             if (option == 2){
                 newMove->hn = newMove->misplacedH();
-                // newMove->fn = newMove->gn + newMove->hn;
             }
             if (option == 3){
                 newMove->hn = newMove->euclideanH();
-                // newMove->fn = newMove->gn + newMove->hn;
             }
             (oldNode->children).push_back(newMove);
             pair<vector<int>, bool> p1 (nextMove, true);
