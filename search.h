@@ -18,3 +18,9 @@ class searchQ {
     queue <Node*> searchQ;
        
 };
+
+struct Compare{
+    bool operator()(Node* a, Node* b){
+    return a->fn > b->fn;
+}
+};

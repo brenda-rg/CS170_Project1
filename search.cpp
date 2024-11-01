@@ -80,11 +80,6 @@ void searchQ::QTraverse(Problem goal, int choice) {
 // }
 
 
-struct Compare{
-    bool operator()(Node* a, Node* b){
-    return a->fn > b->fn;
-}
-};
 
 void searchQ::MTH(queue<Node*>travNode){
     priority_queue<Node*> prior_q;
