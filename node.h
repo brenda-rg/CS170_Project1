@@ -12,8 +12,8 @@ using namespace std;
 struct Node {
     vector<int> data; //stores current state of 8 puzzle
     //costs
-    int gn = 0;
-    int hn = 0;
+    int gn = 0;    //gn = how many are done 
+    int hn = 0;    // hn = how many are left 
     int fn = gn+hn;
     Node* parent; //parent of current node
     vector<Node*> children; //children of current state (ie. valid operations after expanding)

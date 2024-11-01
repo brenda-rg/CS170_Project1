@@ -16,7 +16,6 @@ Node::Node(vector<int> new_data, Node* oldData) {
         data = new_data;
         parent = oldData;
         gn = oldData->gn + 1; // how many are done
-        // hn = how many are left 
         fn = gn+hn;
 };
 
@@ -49,18 +48,3 @@ int Node::misplacedH() {
 };
 
 #endif //NODE_CPP_
-// for the last position of the box?
-// we mod the values and since its a vector it starts at postion 0
-
-/*
-data
- 1 mh = 0 2 3
- 4 5 6
- 7 8 0 mh = 1 because i + 1 woud be equal to 9  when you get to the last one no?
-
- 1 2 3 
- 4 5 6 
- 7 8 0
-
-
-*/
