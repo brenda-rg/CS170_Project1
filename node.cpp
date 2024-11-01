@@ -53,7 +53,7 @@ int Node::misplacedH() {
 
 
 double Node::euclideanH() {
-    this->printV();
+    //this->printV();
     double count = 0;
     for(int i = 0; i  < data.size(); i++) {
         count = count + calculateDist(i, data.at(i));

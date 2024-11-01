@@ -27,6 +27,9 @@ void searchQ::QTraverse(Problem goal, int choice) {
         goal.getHead()->hn = goal.getHead()->euclideanH();
     }
     searchQ.push(goal.getHead());
+    int maxQ =1;
+
+    Node* lastnode = searchQ.front();
     
     do {
        Node* newnode = searchQ.front();
@@ -36,7 +39,7 @@ void searchQ::QTraverse(Problem goal, int choice) {
             newnode->printV();
             cout << "GOAL!!!" << endl
             << "Number of nodes expanded: " << numExpanded << endl
-            << "Number of nodes in queue: " << searchQ.size() << endl;
+            << "max Number of nodes in queue: " << maxQ << endl;
             cout << "The best path with g(n) = " << newnode->gn
             << " and h(n) = " << newnode->hn << endl;
             goal.printPath(newnode);
@@ -60,10 +63,16 @@ void searchQ::QTraverse(Problem goal, int choice) {
             }
             
         }
+        lastnode = searchQ.front();
+        if(maxQ < searchQ.size()) maxQ = searchQ.size();
     }
     while(!searchQ.empty());
     if (searchQ.empty()) {
-        cout << "failure";
+        cout << "failure" << endl
+        << "Number of nodes expanded: " << numExpanded << endl
+        << "Max number of nodes in queue: " << maxQ << endl;
+        cout << "The best path with g(n) = " << lastnode->gn
+        << " and h(n) = " << lastnode->hn << endl;
         exit(0);
     }
 }

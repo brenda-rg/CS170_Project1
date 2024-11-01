@@ -20,6 +20,7 @@ class Problem {
 
     public:
         Problem();
+        int depth = 0;
         Problem(vector<int> init);
         vector<int> goalState = {1,2,3,4,5,6,7,8,0};
         //functions

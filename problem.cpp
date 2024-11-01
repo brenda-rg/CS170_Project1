@@ -150,6 +150,7 @@ queue<Node*> Problem::expandNode(Node* oldNode, int option) {
 };
 
 void Problem::printPath(Node* curr) {
+    depth = 0;
     if (!head) {
             cout << "List is empty." << endl;
             return;
@@ -163,7 +164,9 @@ void Problem::printPath(Node* curr) {
     while(!path.empty()) {
         path.top()->printV();
         path.pop();
+        depth +=1;
     }
+    //cout << "Depth of Goal: " << depth << endl;
 };
 
 
