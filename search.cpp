@@ -86,7 +86,7 @@ void searchQ::MTH(queue<Node*>travNode){
     vector < Node*> prior_v;
 while(!travNode.empty()) {
     Node* node = travNode.front();
-    node-> misplacedH();
+    node->misplacedH();
     node->fn = node ->gn + node->hn ;
     //priority queue would be pushed 
     prior_q.push(node);
