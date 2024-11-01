@@ -145,7 +145,7 @@ queue<Node*> Problem::expandNode(Node* oldNode, int option) {
             nextMove = movedown(oldNode->data);
         }
 
-        if(visited.find(nextMove) != visited.end()) {
+        if(visited.count(nextMove) != 0) {
             repeat = true;
         }
         //cout << "--------------" <<  repeat <<endl;

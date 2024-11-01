@@ -36,7 +36,7 @@ void Node::printV() {
 };
 
 int Node::misplacedH() {
-    this->printV();
+    //this->printV();
     int mh = 0;
     for (int i = 0; i < data.size(); i++) {
         if(i == 8 && data.at(i) == 0){
@@ -45,16 +45,18 @@ int Node::misplacedH() {
         else if (data.at(i) != (i + 1)) {
             ++mh;
         }
-        cout << "misplaced: " << mh << endl;
+        //cout << "misplaced: " << mh << endl;
     }
     return mh;
 };
 
 
 double Node::euclideanH() {
+    this->printV();
     double count = 0;
     for(int i = 0; i  < data.size(); i++) {
         count = count + calculateDist(i, data.at(i));
+        //cout << "distance: " << count << endl;
     }
     return count;
 };
