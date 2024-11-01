@@ -68,9 +68,11 @@ struct Compare{
 };
 
 void searchQ::MTH(queue<Node*>travNode){
-    priority_queue<Node*> prior_q;
+   // priority_queue<Node*> prior_q;
+    //vector < Node*> prior_v;
+    priority_queue<Node*, vector<Node*> , Compare> prior_q;
     vector < Node*> prior_v;
-while(!travNode.empty()) {
+while(!travNode.empty() ) {
     Node* node = travNode.front();
     node->hn = node->misplacedH();
     node->fn = node ->gn + node->hn ;
