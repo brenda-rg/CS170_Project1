@@ -36,7 +36,9 @@ struct Node {
     int misplacedH();
 
     //calculate the euclidean distance heuristic
-    int euclideanH();
+    double euclideanH();
+
+    double calculateDist(int, int);
 };
 
 

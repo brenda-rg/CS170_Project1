@@ -1,4 +1,5 @@
 //main file
+#include <iostream>
 #include "search.cpp"
 using namespace std;
 
@@ -11,6 +12,9 @@ int main() {
     vector<int> row3;
     Problem p;
     int var;
+    int integer;
+    searchQ searchnode;
+    p = Problem(startConfig);
 
     cout << endl <<"Welcome to XXX (change this to your student ID) 8 puzzle solver." << endl
     << "Type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle." << endl;
@@ -53,9 +57,21 @@ int main() {
     cin >> var;
     while(true) {
 
-        if(var == 1 || var == 2 || var == 3) {
-            search.QTraverse(p,var);
-            cout << "testing algorithm " << var << endl;
+        if(var == 1) {
+            search.QTraverse(p, 1);
+            cout << "test1" << endl;
+            break;
+        }
+
+        else if(var == 2) {
+            search.QTraverse(p, 2);
+            cout << "test 2" << endl;
+            break;
+        }
+
+        else if(var == 3) {
+            search.QTraverse(p, 3);
+            cout << "test 3" << endl;
             break;
         }
         else {
